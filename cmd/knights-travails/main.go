@@ -17,7 +17,12 @@ func main() {
 	}
 
 	// Calculating shortest path
-	path := chessboard.GetShortestKnightPath(parameters[0], parameters[1])
+	path, err := chessboard.GetShortestKnightPath(parameters[0], parameters[1])
+
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 
 	// Showing shortest path
 	fmt.Println(strings.Join(path, " "))
