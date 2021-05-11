@@ -2,12 +2,13 @@ package chessboard
 
 import (
 	"fmt"
+	"os"
 	"testing"
 )
 
 func TestValidateInput_HappyPath(t *testing.T) {
 	if err := ValidateInput([]string{"A1", "B2"}); err != nil {
-		t.Errorf("Should not return nil\n")
+		t.Errorf("should not return nil\n")
 	}
 }
 
@@ -15,12 +16,12 @@ func TestValidateInput_NilParameters(t *testing.T) {
 	err := ValidateInput(nil)
 
 	if err == nil {
-		t.Errorf("Should return nil\n")
+		t.Errorf("should return nil\n")
 		return
 	}
 
-	expected := fmt.Sprintf("Usage: %s A1 B2", KnightsTravailsAppName)
-	errorMsg := fmt.Sprintf("Error should be equals to %q\n", expected)
+	expected := fmt.Sprintf("usage: %s A1 B2\n", os.Args[0])
+	errorMsg := fmt.Sprintf("error should be equals to %q\n", expected)
 
 	assertEquals(expected, err.Error(), errorMsg, t)
 }
@@ -29,12 +30,12 @@ func TestValidateInput_EmptyParameters(t *testing.T) {
 	err := ValidateInput([]string{})
 
 	if err == nil {
-		t.Errorf("Should return nil\n")
+		t.Errorf("should return nil\n")
 		return
 	}
 
-	expected := fmt.Sprintf("Usage: %s A1 B2", KnightsTravailsAppName)
-	errorMsg := fmt.Sprintf("Error should be equals to %q\n", expected)
+	expected := fmt.Sprintf("usage: %s A1 B2\n", os.Args[0])
+	errorMsg := fmt.Sprintf("error should be equals to %q\n", expected)
 
 	assertEquals(expected, err.Error(), errorMsg, t)
 }
@@ -43,12 +44,12 @@ func TestValidateInput_SingleParameter(t *testing.T) {
 	err := ValidateInput([]string{"A1"})
 
 	if err == nil {
-		t.Errorf("Should return nil\n")
+		t.Errorf("should return nil\n")
 		return
 	}
 
-	expected := fmt.Sprintf("Usage: %s A1 B2", KnightsTravailsAppName)
-	errorMsg := fmt.Sprintf("Error should be equals to %q\n", expected)
+	expected := fmt.Sprintf("usage: %s A1 B2\n", os.Args[0])
+	errorMsg := fmt.Sprintf("error should be equals to %q\n", expected)
 
 	assertEquals(expected, err.Error(), errorMsg, t)
 }
@@ -57,12 +58,12 @@ func TestValidateInput_MoreThanTwoParameters(t *testing.T) {
 	err := ValidateInput([]string{"A1", "B2", "C3"})
 
 	if err == nil {
-		t.Errorf("Should return nil\n")
+		t.Errorf("should return nil\n")
 		return
 	}
 
-	expected := fmt.Sprintf("Usage: %s A1 B2", KnightsTravailsAppName)
-	errorMsg := fmt.Sprintf("Error should be equals to %q\n", expected)
+	expected := fmt.Sprintf("usage: %s A1 B2\n", os.Args[0])
+	errorMsg := fmt.Sprintf("error should be equals to %q\n", expected)
 
 	assertEquals(expected, err.Error(), errorMsg, t)
 }
@@ -71,12 +72,12 @@ func TestValidateInput_ParametersEquals(t *testing.T) {
 	err := ValidateInput([]string{"A1", "A1"})
 
 	if err == nil {
-		t.Errorf("Should return nil\n")
+		t.Errorf("should return nil\n")
 		return
 	}
 
-	expected := fmt.Sprintf("Usage: %s A1 B2", KnightsTravailsAppName)
-	errorMsg := fmt.Sprintf("Error should be equals to %q\n", expected)
+	expected := fmt.Sprintf("usage: %s A1 B2\n", os.Args[0])
+	errorMsg := fmt.Sprintf("error should be equals to %q\n", expected)
 
 	assertEquals(expected, err.Error(), errorMsg, t)
 }
@@ -97,12 +98,12 @@ func TestValidateInput_FirstParameterInvalid(t *testing.T) {
 		err := ValidateInput(testCase)
 
 		if err == nil {
-			t.Errorf("Should return nil\n")
+			t.Errorf("should return nil\n")
 			continue
 		}
 
-		expected := fmt.Sprintf("Invalid input: invalid parameter '%s'", testCase[0])
-		errorMsg := fmt.Sprintf("Error should be equals to %q\n", expected)
+		expected := fmt.Sprintf("invalid input: invalid parameter '%s'\n", testCase[0])
+		errorMsg := fmt.Sprintf("error should be equals to %q\n", expected)
 
 		assertEquals(expected, err.Error(), errorMsg, t)
 	}
@@ -124,12 +125,12 @@ func TestValidateInput_SecondParameterInvalid(t *testing.T) {
 		err := ValidateInput(testCase)
 
 		if err == nil {
-			t.Errorf("Should return nil\n")
+			t.Errorf("should return nil\n")
 			continue
 		}
 
-		expected := fmt.Sprintf("Invalid input: invalid parameter '%s'", testCase[0])
-		errorMsg := fmt.Sprintf("Error should be equals to %q\n", expected)
+		expected := fmt.Sprintf("invalid input: invalid parameter '%s'\n", testCase[1])
+		errorMsg := fmt.Sprintf("error should be equals to %q\n", expected)
 
 		assertEquals(expected, err.Error(), errorMsg, t)
 	}
