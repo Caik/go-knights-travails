@@ -64,6 +64,12 @@ Running all tests:
 make test
 ```
 
+or:
+
+```bash
+go test ./... -cover
+```
+
 ##
 ---
 
