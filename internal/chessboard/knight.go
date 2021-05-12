@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// GetShortestKnightPath returns one of the shortest paths possible between two squares that a knight piece can do
 func GetShortestKnightPath(start, end string) []string {
 	startSquare := newSquareCoordinates(extractSquareCoordinates(start))
 	endSquare := newSquareCoordinates(extractSquareCoordinates(end))
@@ -45,6 +46,7 @@ func GetShortestKnightPath(start, end string) []string {
 	return []string{}
 }
 
+// getPossibleKnightMovesSquares returns all the possible next moves that a knight piece can do
 func getPossibleKnightMovesSquares(coordinates squareCoordinates) []squareCoordinates {
 	possibleCoordinates := make([]squareCoordinates, 0)
 
