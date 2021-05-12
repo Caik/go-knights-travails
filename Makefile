@@ -13,7 +13,7 @@ test:
 	@echo "##   Running unit tests   ##"
 	@echo "############################"
 	@echo ""
-	@go clean -testcache && go test ./...
+	@go clean -testcache && go test ./... -cover
 
 build: ./cmd/knights-travails/main.go
 	@echo ""
