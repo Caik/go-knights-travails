@@ -15,14 +15,28 @@ func (s squareCoordinates) getY() uint8 {
 	return s.y
 }
 
-func (s squareCoordinates) getXAsIndex() uint8 {
-	return s.x - 'A'
+func (s squareCoordinates) getXAsIndex() int {
+	return int(s.x - 'A')
 }
 
-func (s squareCoordinates) getYAsIndex() uint8 {
-	return s.y - '1'
+func (s squareCoordinates) getYAsIndex() int {
+	return int(s.y - '1')
 }
 
-func (s squareCoordinates) getAsString() string {
-	return fmt.Sprintf("%s%s\n", string(s.x), string(s.y))
+func (s squareCoordinates) String() string {
+	return fmt.Sprintf("%s%s", string(s.x), string(s.y))
+}
+
+func newSquareCoordinates(x, y uint8) squareCoordinates {
+	return squareCoordinates{
+		x: x,
+		y: y,
+	}
+}
+
+func newSquareCoordinatesFromIndex(x, y int) squareCoordinates {
+	return squareCoordinates{
+		x: uint8(x + 'A'),
+		y: uint8(y + '1'),
+	}
 }
