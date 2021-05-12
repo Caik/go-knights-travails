@@ -8,3 +8,8 @@ func assertEquals(expected, obtained, errorMsg string, t *testing.T) {
 	}
 }
 
+func assertEqualsInt(expected, obtained int, errorMsg string, t *testing.T) {
+	if expected != obtained {
+		t.Errorf(errorMsg)
+	}
+}
