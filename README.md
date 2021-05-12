@@ -27,7 +27,7 @@ The current version only consider that only one piece (knight) exists on the che
 There is already a compiled binary for **[Linux](https://github.com/Caik/go-knights-travails/blob/main/dist/knights-travails)** and another one for **[Windows](https://github.com/Caik/go-knights-travails/blob/main/dist/knights-travails.exe)** on the **dist/** directory.
 So you only have to download the appropriate binary and run on your machine.
 
-- PS: You may need to give execution permission to the binary after downloading it:
+PS: You may need to give execution permission to the binary after downloading it:
 
  ```bash
 # giving execution permission on linux
