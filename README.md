@@ -7,9 +7,9 @@
 
 Knight's Travails is an application that proposes to solve the problem of finding the shortest path between two squares on a chessboard using only valid knight moves.
 
-The goal is the return the next moves to achieve the desired target square.
+The goal is to return the next moves to achieve the desired target square.
 
-The current version only consider that is one piece (knight) on the chessboard. 
+The current version only consider that only one piece (knight) exists on the chessboard.
 
 ##
 ---
