@@ -1,16 +1,16 @@
 package chessboard
 
-type KnightPiece struct {
+type CamelPiece struct {
 }
 
-func (k KnightPiece) getNextMoves(coordinates squareCoordinates) []squareCoordinates {
+func (c CamelPiece) getNextMoves(coordinates squareCoordinates) []squareCoordinates {
 	possibleCoordinates := make([]squareCoordinates, 0)
 
 	xIndex := coordinates.getXAsIndex()
 	yIndex := coordinates.getYAsIndex()
 
-	xPossibleCoord := []int{xIndex - 2, xIndex + 2}
-	yPossibleCoord := []int{yIndex - 2, yIndex + 2}
+	xPossibleCoord := []int{xIndex - 3, xIndex + 3}
+	yPossibleCoord := []int{yIndex - 3, yIndex + 3}
 
 	for _, x := range xPossibleCoord {
 		if x < 0 || x > 7 {
@@ -46,3 +46,4 @@ func (k KnightPiece) getNextMoves(coordinates squareCoordinates) []squareCoordin
 
 	return possibleCoordinates
 }
+
