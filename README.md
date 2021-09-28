@@ -5,11 +5,11 @@
 
 ## About
 
-Knight's Travails is an application that proposes to solve the problem of finding the shortest path between two squares on a chessboard using only valid knight moves.
+Knight's Travails is an application that proposes to solve the problem of finding the shortest path between two squares on a chessboard using only valid knight/camel moves.
 
 The goal is to return the next moves to achieve the desired target square.
 
-The current version only consider that only one piece (knight) exists on the chessboard.
+The current version only consider that only one piece (knight or camel) exists on the chessboard.
 
 ##
 ---
@@ -18,6 +18,7 @@ The current version only consider that only one piece (knight) exists on the che
 
 - Input values validation
 - Accepts chessboard notation both on lowercase or uppercase (e.g. a1 or A1)
+- Choose from available chess pieces: Knight or Camel (fairy chess)
 
 ##
 ---
@@ -34,7 +35,7 @@ PS: You may need to give execution permission to the binary after downloading it
 chmod +x ./knights-travails
 ```
 
-If you have **Go** configure on your environment, you can build your own binaries as well:
+If you have **Go** configured on your environment, you can build your own binaries as well:
 
 ```bash
 # building a MacOS on AMD64 binary
@@ -49,8 +50,8 @@ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -a -ldflags '-extldflags "-stati
 Example:
 
 ```bash
-# getting the shortest path from A1 to B2
-./knights-travails A1 B2
+# getting the shortest path from A1 to B2 using the knight
+./knights-travails A1 B2 knight
 ```
 
 ##
