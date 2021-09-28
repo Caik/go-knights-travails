@@ -5,20 +5,12 @@ import (
 	"strings"
 )
 
-func GetShortestPath(start, end, piece string) []string {
-	var chessPiece ChessPiece
+func GetShortestPath(start, end, piece string) ([]string, error) {
+	chessPiece, err := GetChessPieceByName(piece)
 
-	switch piece {
-	case "knight":
-		chessPiece = KnightPiece{}
-	case "camel":
-		chessPiece = CamelPiece{}
-	default:
-		chessPiece = nil
+	if err != nil {
+		return nil, err
 	}
-
-	//TODO check chessPìece is nil
-
 
 	startSquare := newSquareCoordinates(extractSquareCoordinates(start))
 	endSquare := newSquareCoordinates(extractSquareCoordinates(end))
@@ -34,7 +26,7 @@ func GetShortestPath(start, end, piece string) []string {
 		value := current.square.String()
 
 		if value == endSquare.String() {
-			return strings.Split(current.path, " ")
+			return strings.Split(current.path, " "), nil
 		}
 
 		next := chessPiece.getNextMoves(current.square)
@@ -56,8 +48,7 @@ func GetShortestPath(start, end, piece string) []string {
 		}
 	}
 
-	return []string{}
-
+	return []string{}, nil
 }
 
 type squarePath struct {

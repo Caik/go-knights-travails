@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/Caik/go-knights-travails/internal/chessboard"
 	"os"
 	"strings"
+
+	"github.com/Caik/go-knights-travails/internal/chessboard"
 )
 
 func main() {
@@ -17,7 +18,12 @@ func main() {
 	}
 
 	// Calculating shortest path
-	path := chessboard.GetShortestKnightPath(parameters[0], parameters[1])
+	path, err := chessboard.GetShortestPath(parameters[0], parameters[1], parameters[2])
+
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 
 	// Showing shortest path
 	fmt.Println(strings.Join(path, " "))
