@@ -10,14 +10,18 @@ import (
 //
 // It has to be two distinct strings that represent valid chessboard squares
 func ValidateInput(parameters []string) error {
-	if len(parameters) != 2 || parameters[0] == parameters[1] {
-		return fmt.Errorf("usage: %s A1 B2\n", os.Args[0])
+	if len(parameters) != 3 || parameters[0] == parameters[1] {
+		return fmt.Errorf("usage: %s A1 B2 %s", os.Args[0], GetAvailablePiecesName())
 	}
 
-	for _, parameter := range parameters {
+	for _, parameter := range parameters[:2] {
 		if err := validateParameter(parameter); err != nil {
 			return err
 		}
+	}
+
+	if _, err := GetChessPieceByName(parameters[2]); err != nil {
+		return err
 	}
 
 	return nil
@@ -25,7 +29,7 @@ func ValidateInput(parameters []string) error {
 
 // validateParameter validate if the string passed is a valid chessboard square
 func validateParameter(parameter string) error {
-	errorMsg := "invalid input: invalid parameter '%s'\n"
+	errorMsg := "invalid input: invalid parameter '%s'"
 
 	if len(parameter) != 2 {
 		return fmt.Errorf(errorMsg, parameter)
